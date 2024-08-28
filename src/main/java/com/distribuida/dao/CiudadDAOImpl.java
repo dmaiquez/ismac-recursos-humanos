@@ -6,10 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.distribuida.entities.Asistencia;
+import com.distribuida.entities.Ciudad;
 
 @Repository
-public class AsistenciaDAOImpl implements AsistenciaDAO {
+public class CiudadDAOImpl implements CiudadDAO {
 	
 	
 	@Autowired
@@ -18,36 +18,36 @@ public class AsistenciaDAOImpl implements AsistenciaDAO {
 	
 	@Override
 	@Transactional
-	public List<Asistencia> findAll(){
+	public List<Ciudad> findAll(){
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.getCurrentSession();		
-		return session.createQuery("from Asistencia",Asistencia.class).getResultList();
+		return session.createQuery("from Ciudad",Ciudad.class).getResultList();
 		
 	}
 	
 	@Override
 	@Transactional
-	public Asistencia findOne(int id) {
+	public Ciudad findOne(int id) {
 		// TODO Auto-generated method stub
 		Session session =sessionFactory.getCurrentSession();
-		return session.get(Asistencia.class,id);
+		return session.get(Ciudad.class,id);
 	}
 
 	@Override
 	@Transactional
-	public void add(Asistencia asistencia) {
+	public void add(Ciudad Ciudad) {
 		// TODO Auto-generated method stub
 	Session session=sessionFactory.getCurrentSession();	
-	session.saveOrUpdate(asistencia);
+	session.saveOrUpdate(Ciudad);
 	
 	}
 
 	@Override
 	@Transactional
-	public void up(Asistencia asistencia) {
+	public void up(Ciudad Ciudad) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();	
-		session.saveOrUpdate(asistencia);
+		session.saveOrUpdate(Ciudad);
 	}
 
 	

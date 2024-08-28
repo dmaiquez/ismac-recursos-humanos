@@ -34,10 +34,10 @@ public class Vacacion {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_inicio_vacacion")
-	private java.sql.Date fecha_inicio_vacacion;
+	private Date fecha_inicio_vacacion;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_fin_vacacion")
-	private java.sql.Date fecha_fin_vacacion;
+	private Date fecha_fin_vacacion;
 	@Column(name="total_dias_vacacion")
 	private int total_dias_vacacion;
 	@Column(name="vacacion_aprobado")
@@ -47,7 +47,7 @@ public class Vacacion {
 	
 	public Vacacion () {}
 	
-	public Vacacion(int id_vacacion, Empleado empleado, java.sql.Date fecha_inicio_vacacion, java.sql.Date fecha_fin_vacacion,
+	public Vacacion(int id_vacacion, Empleado empleado, Date fecha_inicio_vacacion, Date fecha_fin_vacacion,
 			int total_dias_vacacion, String vacacion_aprobado) {
 		
 		this.id_vacacion = id_vacacion;
