@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.distribuida.dao.CiudadDAO;
 import com.distribuida.dao.ContratacionDAO;
+import com.distribuida.dao.DepartamentoDAO;
 import com.distribuida.entities.Contratacion;
 
 
@@ -23,6 +25,12 @@ public class ContratacionController {
 
 	@Autowired
 	private ContratacionDAO contratacionDAO;
+	
+	@Autowired
+	private CiudadDAO ciudadDAO;
+	
+	@Autowired
+	private DepartamentoDAO departamentoDAO;
 	
 	// Path Secundario
 	@GetMapping("/findAll") 
@@ -76,12 +84,12 @@ List<Contratacion> contrataciones = contratacionDAO.findAll();
 			){
 //try {
 		if(idContratacion == null){
-			Contratacion contratacion = new Contratacion(0,idCiudad,idDepartamento,vacanteFecha,vacantePuesto,vacanteDescripcion,vacanteModalidad
+			Contratacion contratacion = new Contratacion(0,ciudadDAO.findOne(idCiudad), departamentoDAO.findOne(idDepartamento) ,vacanteFecha,vacantePuesto,vacanteDescripcion,vacanteModalidad
 					,vacanteTiempo,vacanteNivel,vacanteNumero,vacanteSueldoEstimado);
 			contratacionDAO.add(contratacion); 
 			
 		}else {
-			Contratacion contratacion = new Contratacion(idContratacion,idCiudad,idDepartamento,vacanteFecha,vacantePuesto,vacanteDescripcion,vacanteModalidad
+			Contratacion contratacion = new Contratacion(idContratacion,ciudadDAO.findOne(idCiudad), departamentoDAO.findOne(idDepartamento),vacanteFecha,vacantePuesto,vacanteDescripcion,vacanteModalidad
 					,vacanteTiempo,vacanteNivel,vacanteNumero,vacanteSueldoEstimado);
 			contratacionDAO.up(contratacion);
 			

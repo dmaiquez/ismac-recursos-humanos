@@ -13,14 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.distribuida.entities.ContratacionDetalle;
+import com.distribuida.dao.ContratacionDAO;
 import com.distribuida.dao.ContratacionDetalleDAO;
+import com.distribuida.dao.EmpleadoDAO;
+import com.distribuida.dao.SucursalDAO;
+import com.distribuida.dao.TipoContratoDAO;
 
 @Controller
 @RequestMapping("/contratacionDetalle")//path principal
 public class ContratacionDetalleController {
+	
+	
 	@Autowired
 	private ContratacionDetalleDAO contratacionDetalleDAO;
 	
+	@Autowired
+	private ContratacionDAO contratacionDAO;
+	
+	@Autowired
+	private SucursalDAO sucursalDAO;
+	
+	@Autowired
+	private EmpleadoDAO empleadoDAO;
+	
+	@Autowired
+	private TipoContratoDAO tipoContratoDAO;
 	
 	@GetMapping ("/findAll")//path secundario
 	public String findAll(Model model) {
@@ -82,13 +99,25 @@ public class ContratacionDetalleController {
 					 ,Model model
 					) {
 			if(idContratacionDetalle == null) {
-				ContratacionDetalle contratacionDetalle =new ContratacionDetalle(0,idContratacion,idEmpleado,idTipoContrato,idSucursal,academiaTitulo,academiaPais,academiaNivel,academiaArea,academiaInstitucion
+				ContratacionDetalle contratacionDetalle =new ContratacionDetalle(
+						 0
+						,contratacionDAO.findOne(idContratacion) 
+						,empleadoDAO.findOne(idEmpleado) 
+						,tipoContratoDAO.findOne(idTipoContrato) 
+						,sucursalDAO.findOne(idSucursal) 
+						,academiaTitulo,academiaPais,academiaNivel,academiaArea,academiaInstitucion
 						,academiaNivelEstado,academiaCertificado,academiaNivelIdiomaIngles,academiaNivelIdiomaOtro,explabNivel,explabTiempoAnios,sueldoEstimado,sueldoAprobado,diasVacaciones,aprobadoContratacion
 						,fechaInicioContratacion,fechaFinContratacion,hojaVida,foto);
 				contratacionDetalleDAO.add(contratacionDetalle);
 				
 			}else {
-				ContratacionDetalle contratacionDetalle =new ContratacionDetalle(idContratacionDetalle,idContratacion,idEmpleado,idTipoContrato,idSucursal,academiaTitulo,academiaPais,academiaNivel,academiaArea,academiaInstitucion
+				ContratacionDetalle contratacionDetalle =new ContratacionDetalle(
+						 idContratacionDetalle
+						,contratacionDAO.findOne(idContratacion) 
+						,empleadoDAO.findOne(idEmpleado) 
+						,tipoContratoDAO.findOne(idTipoContrato) 
+						,sucursalDAO.findOne(idSucursal) 
+						 ,academiaTitulo,academiaPais,academiaNivel,academiaArea,academiaInstitucion
 						,academiaNivelEstado,academiaCertificado,academiaNivelIdiomaIngles,academiaNivelIdiomaOtro,explabNivel,explabTiempoAnios,sueldoEstimado,sueldoAprobado,diasVacaciones,aprobadoContratacion
 						,fechaInicioContratacion,fechaFinContratacion,hojaVida,foto);
 				contratacionDetalleDAO.up(contratacionDetalle);

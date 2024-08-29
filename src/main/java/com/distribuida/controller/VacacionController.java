@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.distribuida.dao.EmpleadoDAO;
 import com.distribuida.dao.VacacionDAO;
 import com.distribuida.entities.Vacacion;
 
@@ -23,6 +24,10 @@ public class VacacionController {
 		@Autowired	
 		@Qualifier("vacacionDAOImpl")
 		private VacacionDAO vacacionDAO;
+		
+		
+		@Autowired
+		private EmpleadoDAO empleadoDAO;
 		
 		@GetMapping("/findAll")      // path secundario
 		public String finAll(Model  model) {
@@ -81,12 +86,16 @@ public class VacacionController {
 		//	try {
 			
 				if(id_vacacion == null) {
-					Vacacion Vacacion = new Vacacion(0, id_empleado, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
+					Vacacion Vacacion = new Vacacion(0
+							, empleadoDAO.findOne(id_empleado) 
+							, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
 					vacacionDAO.add(Vacacion);
 					
 				}else {
 					
-					Vacacion vacacion = new Vacacion(id_vacacion, id_empleado, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
+					Vacacion vacacion = new Vacacion(id_vacacion
+							, empleadoDAO.findOne(id_empleado)
+							, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
 					vacacionDAO.up(vacacion);
 					
 		//	} catch (Exception e) {

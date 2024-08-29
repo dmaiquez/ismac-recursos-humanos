@@ -1,6 +1,6 @@
 package com.distribuida.controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.distribuida.dao.AsistenciaDAO;
+import com.distribuida.dao.EmpleadoDAO;
 import com.distribuida.entities.Asistencia;
 
 @Controller
@@ -24,6 +25,10 @@ public class AsistenciaController {
     @Autowired
     @Qualifier("asistenciaDAOImpl")
     private AsistenciaDAO asistenciaDAO;
+    
+    
+    @Autowired
+    private EmpleadoDAO empleadoDAO;
 
     @GetMapping("/findAll")
     public String findAll(ModelMap modelMap) {
@@ -75,10 +80,10 @@ public class AsistenciaController {
 
         Asistencia asistencia;
         if (id_asistencia == null) {
-            asistencia = new Asistencia(0, id_empleado, fecha_asistencia, anio, mes, dia, entrada, salida, total_horas_trabajo, total_horas_extra, registro_atraso, total_horas_atraso, registro_falta, registro_vacacion, total_horas_trabajo_mes);
+            asistencia = new Asistencia(0, empleadoDAO.findOne(id_empleado), fecha_asistencia, anio, mes, dia, entrada, salida, total_horas_trabajo, total_horas_extra, registro_atraso, total_horas_atraso, registro_falta, registro_vacacion, total_horas_trabajo_mes);
             asistenciaDAO.add(asistencia);
         } else {
-            asistencia = new Asistencia(id_asistencia, id_empleado, fecha_asistencia, anio, mes, dia, entrada, salida, total_horas_trabajo, total_horas_extra, registro_atraso, total_horas_atraso, registro_falta, registro_vacacion, total_horas_trabajo_mes);
+            asistencia = new Asistencia(id_asistencia, empleadoDAO.findOne(id_empleado), fecha_asistencia, anio, mes, dia, entrada, salida, total_horas_trabajo, total_horas_extra, registro_atraso, total_horas_atraso, registro_falta, registro_vacacion, total_horas_trabajo_mes);
             asistenciaDAO.up(asistencia);
         }
 

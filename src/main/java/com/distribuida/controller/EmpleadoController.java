@@ -12,14 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.distribuida.dao.CiudadDAO;
 import com.distribuida.dao.EmpleadoDAO;
 import com.distribuida.entities.Empleado;
 
 @Controller
 @RequestMapping("/empleados")//path principal
 public class EmpleadoController {
+	
 	@Autowired
 	private EmpleadoDAO empleadoDAO;
+	
+	@Autowired
+	private CiudadDAO ciudadDAO;
 	
 	@GetMapping("/findAll")//path secundario
 	public String findAll(Model model) {
@@ -75,11 +80,11 @@ public class EmpleadoController {
 					 ,Model model
 					) {
 			if(idEmpleado == null) {
-				Empleado empleado =new Empleado(0,idciudad,cedula_ruc,nombre,apellido,fecha_nacimiento,edad,genero,nacionalidad,direccion,telefono,correo,codigo_postal,estado_civil,num_cargas_familiares,estado_empleado,foto);
+				Empleado empleado =new Empleado(0, ciudadDAO.findOne(idciudad) ,cedula_ruc,nombre,apellido,fecha_nacimiento,edad,genero,nacionalidad,direccion,telefono,correo,codigo_postal,estado_civil,num_cargas_familiares,estado_empleado,foto);
 				empleadoDAO.add(empleado);
 				
 			}else {
-				Empleado empleado =new Empleado(0,idciudad,cedula_ruc,nombre,apellido,fecha_nacimiento,edad,genero,nacionalidad,direccion,telefono,correo,codigo_postal,estado_civil,num_cargas_familiares,estado_empleado,foto);
+				Empleado empleado =new Empleado(idEmpleado,ciudadDAO.findOne(idciudad),cedula_ruc,nombre,apellido,fecha_nacimiento,edad,genero,nacionalidad,direccion,telefono,correo,codigo_postal,estado_civil,num_cargas_familiares,estado_empleado,foto);
 				empleadoDAO.up(empleado);
 				
 			}

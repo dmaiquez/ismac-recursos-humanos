@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.distribuida.dao.PagosDAO;
+import com.distribuida.dao.EmpleadoDAO;
 import com.distribuida.dao.FormapagoDAO;
 import com.distribuida.entities.Pagos;
 
@@ -28,6 +29,9 @@ public class PagosController {
     @Autowired
     private FormapagoDAO formapagoDAO;
 
+    @Autowired
+    private EmpleadoDAO empleadoDAO;
+    
     @GetMapping("/findAll")
     public String findAll(ModelMap modelMap) {
             List<Pagos> pagos = pagosDAO.findAll();
@@ -69,10 +73,16 @@ public class PagosController {
        
             Pagos pagos;
             if (id_pago == null ) {
-                pagos = new Pagos(0, id_empleado, id_forma_pago, aplica_iva, monto_pago, monto_iva, monto_descuento, monto_extras, monto_pago_total);
+                pagos = new Pagos(0
+                		, empleadoDAO.findOne(id_empleado) 
+                		, formapagoDAO.findOne(id_forma_pago) 
+                		, aplica_iva, monto_pago, monto_iva, monto_descuento, monto_extras, monto_pago_total);
                 pagosDAO.add(pagos);
             } else {
-                pagos = new Pagos(id_pago, id_empleado, id_forma_pago, aplica_iva, monto_pago, monto_iva, monto_descuento, monto_extras, monto_pago_total);
+                pagos = new Pagos(id_pago
+                		, empleadoDAO.findOne(id_empleado) 
+                		, formapagoDAO.findOne(id_forma_pago)
+                		, aplica_iva, monto_pago, monto_iva, monto_descuento, monto_extras, monto_pago_total);
                 pagosDAO.up(pagos);
             }
             

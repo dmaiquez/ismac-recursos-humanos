@@ -1,7 +1,8 @@
 package com.distribuida.entities;
 
-import java.sql.Date;
+
 import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -63,14 +64,14 @@ public class Asistencia {
     public Asistencia() {}
 
     // Constructor con parámetros
-    public Asistencia(int id_asistencia, Empleado empleado, Date fecha_asistencia, int anio, int mes, int dia,
+    public Asistencia(int id_asistencia, Empleado empleado, Date fecha_asistencia2, int anio, int mes, int dia,
                       LocalTime hora_entrada_trabajo, LocalTime hora_salida_trabajo, int total_horas_trabajo,
                       int total_horas_extra, String registro_atraso, int total_horas_atraso, String registro_falta,
                       String registro_vacacion, int total_horas_trabajo_mes) {
 
         this.id_asistencia = id_asistencia; // Cambiado de "id_asistencias" a "id_asistencia"
         this.empleado = empleado;
-        this.fecha_asistencia = fecha_asistencia;
+        this.fecha_asistencia = fecha_asistencia2;
         this.anio = anio;
         this.mes = mes;
         this.dia = dia;
@@ -84,6 +85,11 @@ public class Asistencia {
         this.registro_vacacion = registro_vacacion;
         this.total_horas_trabajo_mes = total_horas_trabajo_mes;
     }
+
+    
+    
+    
+
 
 	public int getId_asistencia() {
 		return id_asistencia;
