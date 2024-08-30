@@ -12,13 +12,13 @@
 	
 	<h1>Asistencias</h1>
 	
-	<button onclick="window.location.href='/rrrhh-web/asistencia/findOne?opcion=1';return false;" > Agregar
+	<button onclick="window.location.href='/ismac-recursos-humanos/asistencia/findOne?opcion=1';return false;" > Agregar
 		</button>
 	<table border="2">
 	 	<thead>
 	 		<tr>
 	 		<th>Id Asistencia</th>
-	 		<th>Id Empleado</th>
+	 		<th>Empleado</th>
 	 		<th>Fecha Asistencia</th>
 	 		<th>Año</th>
 	 		<th>Mes</th>
@@ -38,8 +38,8 @@
 	 	<c:forEach var="item" items="${asistencias}">
 	 		<tr>
 	 			<td>${item.id_asistencia}</td>
-	 			<td>${item.id_empleado}</td>
-	 			<td>${item.fecha_asistencia}</td>
+	 			<td>${item.empleado.nombre} ${item.empleado.apellido}</td>
+	 			<td>${fn:substring(item.fecha_asistencia,0,10)}</td>
 	 			<td>${item.anio}</td>
 	 			<td>${item.mes}</td>
 	 			<td>${item.dia}</td>
@@ -53,10 +53,10 @@
 	 			<td>${item.registro_vacacion}</td>
 	 			<td>${item.total_horas_trabajo_mes}</td>
 	 				 <td>
-					<button onclick="window.location.href='/rrrhh-web/asistencia/findOne?id_asistencia=${item.id_asistencia}&opcion=1';return false;" > Actualizar
+					<button onclick="window.location.href='/ismac-recursos-humanos/asistencia/findOne?id_asistencia=${item.id_asistencia}&opcion=1';return false;" > Actualizar
 					</button>
 					
-					<button onclick="window.location.href='/rrrhh-web/asistencia/findOne?id_asistencia=${item.id_asistencia}&opcion=2';return false;" > Borrar
+					<button onclick="window.location.href='/ismac-recursos-humanos/asistencia/findOne?id_asistencia=${item.id_asistencia}&opcion=2';return false;" > Borrar
 					</button>
 					</td>
 	 		</tr>

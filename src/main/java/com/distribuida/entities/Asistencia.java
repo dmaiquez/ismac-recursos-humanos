@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,7 +33,7 @@ public class Asistencia {
     @JoinColumn(name = "id_empleado")
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.PERSIST, CascadeType.REFRESH})
     private Empleado empleado;
-            
+    @DateTimeFormat(pattern = "yyyy-MM-dd")       
     @Column(name = "fecha_asistencia")
     private Date fecha_asistencia;
     @Column(name = "anio")

@@ -14,7 +14,7 @@
           <input type="hidden" id="id_asistencia" name="id_asistencia" value="${asistencia.id_asistencia}"/>
            <br/>
            <button type="submit">Guardar</button>
-          <button onclick="window.location.href='/rrrhh-web/asistencia/findAll';return false;">
+          <button onclick="window.location.href='/ismac-recursos-humanos/asistencia/findAll';return false;">
           CANCELAR 
           </button>
       </form>

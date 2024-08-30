@@ -15,12 +15,19 @@
     <form action="add" method="post">
         <input type="hidden" id="id_asistencia" name="id_asistencia" value="${asistencia.id_asistencia}">
 		
-		Id Empleado
-		<input type="number" id="id_empleado" name="id_empleado" value="${asistencia.id_empleado}">
+		Empleado
+		<%-- <input type="number" id="id_empleado" name="id_empleado" value="${asistencia.empleado.idEmpleado}"> --%>
+		
+		<select id="id_empleado" name="id_empleado">
+			<c:forEach var="item" items="${empleados}">
+				<option value="${item.idEmpleado}" ${ item.idEmpleado == asistencia.empleado.idEmpleado ? 'selected': ''} > ${item.nombre} ${item.apellido} </option>
+			</c:forEach>			
+		</select>
+		
 		<br/>
 		
 		Fecha de Asistencia
-		<input type="date" id="fecha_asistencia" name="fecha_asistencia" value="${fn:substring(item.fecha_asistencia, 0, 10)}">
+		<input type="date" id="fecha_asistencia" name="fecha_asistencia" value="${fn:substring(asistencia.fecha_asistencia,0,10)}">
 		<br/>
 		
 		Año
@@ -73,7 +80,7 @@
 
         
 		<button type="submit">Guardar</button>
- <button type="button" onclick="window.location.href='/rrrhh-web/asistencia/findAll';return false;">CANCELAR </button>
+ <button type="button" onclick="window.location.href='/ismac-recursos-humanos/asistencia/findAll';return false;">CANCELAR </button>
     </form>
 
 </body>

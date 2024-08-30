@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,6 +50,9 @@ public class AsistenciaController {
                 Asistencia asistencia = asistenciaDAO.findOne(idAsistencia);
                 modelMap.addAttribute("asistencia", asistencia);
             }
+            
+            modelMap.addAttribute("empleados", empleadoDAO.findAll());
+            
             if (opcion == 1) {
                 return "asistencias-add";
             } else {
@@ -60,7 +64,7 @@ public class AsistenciaController {
     @PostMapping("/add")
     public String add(@RequestParam("id_asistencia") @Nullable Integer id_asistencia,
                       @RequestParam("id_empleado") @Nullable Integer id_empleado,
-                      @RequestParam("fecha_asistencia") @Nullable Date fecha_asistencia,
+                      @RequestParam("fecha_asistencia") @Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha_asistencia,
                       @RequestParam("anio") @Nullable Integer anio,
                       @RequestParam("mes") @Nullable Integer mes,
                       @RequestParam("dia") @Nullable Integer dia,
