@@ -49,8 +49,8 @@ public class PagosController {
                 modelMap.addAttribute("pago", pago);
             }
 
-            modelMap.addAttribute("formaspago", formapagoDAO.findAll());
-            
+            modelMap.addAttribute("formasPagos", formapagoDAO.findAll());
+            modelMap.addAttribute("empleados", empleadoDAO.findAll());
             if (opcion == 1) {
                 return "pagos-add"; 
             } else {

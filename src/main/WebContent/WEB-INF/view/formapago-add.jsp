@@ -31,7 +31,7 @@
             </div>
             
             <button class="btn btn-success" type="submit">Guardar</button>
-            <button class="btn btn-danger" type="button" onclick="window.location.href='/rrrhh-web/formapago/findAll'; return false;">Cancelar</button>
+            <button class="btn btn-danger" type="button" onclick="window.location.href='/ismac-recursos-humanos/formapago/findAll'; return false;">Cancelar</button>
         </form>
     </div>
 </section>

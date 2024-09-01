@@ -17,7 +17,7 @@
       <div class="container">
         <h1>Formas de Pago</h1>
         <div class="mb-3 text-center">
-            <button class="btn btn-primary" onclick="window.location.href='/rrrhh-web/formapago/findOne?opcion=1';return false;">
+            <button class="btn btn-primary" onclick="window.location.href='/ismac-recursos-humanos/formapago/findOne?opcion=1';return false;">
                 Agregar <i class="fa-solid fa-circle-plus"></i>
             </button>
         </div>
@@ -45,10 +45,10 @@
                             <td>${item.forma_pago}</td>
                             <td>${item.descripcion}</td>
                             <td>
-                                <button class="btn btn-success" onclick="window.location.href='/rrrhh-web/formapago/findOne?id_forma_pago=${item.id_forma_pago}&opcion=1';return false;">
+                                <button class="btn btn-success" onclick="window.location.href='/ismac-recursos-humanos/formapago/findOne?id_forma_pago=${item.id_forma_pago}&opcion=1';return false;">
                                      <i class="fa-solid fa-arrows-rotate"></i>
                                 </button>
-                                <button class="btn btn-danger" onclick="window.location.href='/rrrhh-web/formapago/findOne?id_forma_pago=${item.id_forma_pago}&opcion=2';return false;">
+                                <button class="btn btn-danger" onclick="window.location.href='/ismac-recursos-humanos/formapago/findOne?id_forma_pago=${item.id_forma_pago}&opcion=2';return false;">
                                      <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </td>

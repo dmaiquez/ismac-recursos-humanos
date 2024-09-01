@@ -61,7 +61,7 @@
                         <button class="btn btn-success btn-lg" type="submit">
                             Guardar <i class="fa-solid fa-check"></i>
                         </button>
-                        <button class="btn btn-danger btn-lg" type="button" onclick="window.location.href='/rrrhh-web/pagos/findAll';return false;">
+                        <button class="btn btn-danger btn-lg" type="button" onclick="window.location.href='/ismac-recursos-humanos/pagos/findAll';return false;">
                             Cancelar <i class="fa-solid fa-x"></i>
                         </button>
                     </div>

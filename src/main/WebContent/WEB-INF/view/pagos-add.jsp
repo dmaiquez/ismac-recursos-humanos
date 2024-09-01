@@ -22,12 +22,22 @@
             
             <div class="form-group">
                 <label for="id_empleado" class="form-label">Id Empleado</label>
-                <input class="form-control" type="text" id="id_empleado" name="id_empleado" value="${pago.id_empleado}" required/>
+                <select class="form-select" id="id_empleado" name="id_empleado" required>
+               		<c:forEach var="item" items="${empleados}">
+               			<option value="${item.idEmpleado}" ${item.idEmpleado == pago.empleado.idEmpleado? 'selected': ''} >${item.nombre} ${item.apellido}</option>
+               		</c:forEach>
+               	</select>
+                <%-- <input class="form-control" type="text" id="id_empleado" name="id_empleado" value="${pago.id_empleado}" required/> --%>
             </div>
             
             <div class="form-group">
                 <label for="id_forma_pago" class="form-label">Id Forma de Pago</label>
-                <input class="form-control" type="text" id="id_forma_pago" name="id_forma_pago" value="${pago.id_forma_pago}" required/>
+                <select class="form-select" id="id_forma_pago" name="id_forma_pago" required>
+               		<c:forEach var="item" items="${formasPagos}">
+               			<option value="${item.id_forma_pago}" ${item.id_forma_pago == pago.formaPago.id_forma_pago? 'selected': ''} >${item.forma_pago}</option>
+               		</c:forEach>
+               	</select>
+                <%-- <input class="form-control" type="text" id="id_forma_pago" name="id_forma_pago" value="${pago.id_forma_pago}" required/> --%>
             </div>
             
             <div class="form-group">
@@ -37,31 +47,31 @@
             
             <div class="form-group">
                 <label for="monto_pago" class="form-label">Monto Pago</label>
-                <input class="form-control" type="number" id="monto_pago" name="monto_pago" value="${pago.monto_pago}" required/>
+                <input class="form-control" type="number" step="any" id="monto_pago" name="monto_pago" value="${pago.monto_pago}" required/>
             </div>
             
             <div class="form-group">
                 <label for="monto_iva" class="form-label">Monto IVA</label>
-                <input class="form-control" type="number" id="monto_iva" name="monto_iva" value="${pago.monto_iva}" />
+                <input class="form-control" type="number" step="any" id="monto_iva" name="monto_iva" value="${pago.monto_iva}" />
             </div>
             
             <div class="form-group">
                 <label for="monto_descuento" class="form-label">Monto Descuento</label>
-                <input class="form-control" type="number" id="monto_descuento" name="monto_descuento" value="${pago.monto_descuento}" />
+                <input class="form-control" type="number" step="any" id="monto_descuento" name="monto_descuento" value="${pago.monto_descuento}" />
             </div>
             
             <div class="form-group">
                 <label for="monto_extras" class="form-label">Monto Extras</label>
-                <input class="form-control" type="number" id="monto_extras" name="monto_extras" value="${pago.monto_extras}" />
+                <input class="form-control" type="number" step="any" id="monto_extras" name="monto_extras" value="${pago.monto_extras}" />
             </div>
             
             <div class="form-group">
                 <label for="monto_pago_total" class="form-label">Monto Pago Total</label>
-                <input class="form-control" type="number" id="monto_pago_total" name="monto_pago_total" value="${pago.monto_pago_total}" required/>
+                <input class="form-control" type="number" step="any" id="monto_pago_total" name="monto_pago_total" value="${pago.monto_pago_total}" required/>
             </div>
             
             <button class="btn btn-success" type="submit">Guardar</button>
-            <button class="btn btn-danger" type="button" onclick="window.location.href='/rrrhh-web/pagos/findAll'; return false;">Cancelar</button>
+            <button class="btn btn-danger" type="button" onclick="window.location.href='/ismac-recursos-humanos/pagos/findAll'; return false;">Cancelar</button>
         </form>
     </div>
 </section>

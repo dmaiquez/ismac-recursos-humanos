@@ -17,7 +17,7 @@
     <div class="container">
         <h1>Listado de Pagos</h1>
         <div class="mb-3 text-center">
-            <button class="btn btn-primary" onclick="window.location.href='/rrrhh-web/pagos/findOne?opcion=1';return false;">
+            <button class="btn btn-primary" onclick="window.location.href='/ismac-recursos-humanos/pagos/findOne?opcion=1';return false;">
                 Agregar <i class="fa-solid fa-circle-plus"></i>
             </button>
         </div>
@@ -47,8 +47,8 @@
                     <c:forEach var="item" items="${pagos}">
                         <tr>
                             <td>${item.id_pago}</td>
-                            <td>${item.id_empleado}</td>
-                            <td>${item.id_forma_pago}</td>
+                            <td>${item.empleado.nombre} ${item.empleado.apellido}</td>
+                            <td>${item.formaPago.forma_pago}</td>
                             <td>${item.aplica_iva}</td>
                             <td>${item.monto_pago}</td>
                             <td>${item.monto_iva}</td>
@@ -56,10 +56,10 @@
                             <td>${item.monto_extras}</td>
                             <td>${item.monto_pago_total}</td>
                             <td>
-                                <button class="btn btn-success" onclick="window.location.href='/rrrhh-web/pagos/findOne?id_pago=${item.id_pago}&opcion=1';return false;">
+                                <button class="btn btn-success" onclick="window.location.href='/ismac-recursos-humanos/pagos/findOne?id_pago=${item.id_pago}&opcion=1';return false;">
                                     <i class="fa-solid fa-arrows-rotate"></i>
                                 </button>
-                                <button class="btn btn-danger" onclick="window.location.href='/rrrhh-web/pagos/findOne?id_pago=${item.id_pago}&opcion=2';return false;">
+                                <button class="btn btn-danger" onclick="window.location.href='/ismac-recursos-humanos/pagos/findOne?id_pago=${item.id_pago}&opcion=2';return false;">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </td>
