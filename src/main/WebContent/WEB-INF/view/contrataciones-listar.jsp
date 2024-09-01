@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos.css"/> 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-table.min.css"/>  
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/> 
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"/>
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
@@ -27,8 +28,9 @@
 
         /* Estilo para la tabla */
         .table {
-            background-color: #f8f9fa;
-            ; /* Fondo gris claro para la tabla */
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */
+          ;
+             /* Fondo gris claro para la tabla */
         }
 
         /* Estilo para los encabezados de la tabla (th) */
@@ -46,7 +48,7 @@
 
         /* Estilo para las filas alternas en el cuerpo de la tabla */
         .table tbody tr:nth-child(even) {
-            background-color: #f2f2f2; /* Fondo gris muy claro */
+            background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con 50% de transparencia */; /* Fondo gris muy claro */
         }
 
         /* Estilo para los botones en la tabla */
@@ -58,10 +60,10 @@
 <body>
 <nav></nav>
 <section class="px-5 px-5">
-   
+    <h1>LISTA DE CONTRATOS</h1>
     <div class="container" style="text-align: center;">
-   <h1>LISTA DE CONTRATOS</h1>
-        <button class="btn btn-primary" onclick="window.location.href ='/rhumanos-web/contrataciones/findOne?&opcion=1';return false;">
+
+        <button class="btn btn-primary" onclick="window.location.href ='/ismac-recursos-humanos/contrataciones/findOne?&opcion=1';return false;">
             
             <i class="fa-solid fa-handshake"></i> Nuevo Contrato
         </button>
@@ -106,10 +108,10 @@
                         <td>${item.vacanteNumero}</td>
                         <td>${item.vacanteSueldoEstimado}</td>
                         <td>
-                            <button class="btn btn-success" onclick="window.location.href ='/rhumanos-web/contrataciones/findOne?idContratacion=${item.idContratacion}&opcion=1';return false;">
+                            <button class="btn btn-secondary" onclick="window.location.href ='/ismac-recursos-humanos/contrataciones/findOne?idContratacion=${item.idContratacion}&opcion=1';return false;">
                                 <i class="fa-solid fa-rotate-right"></i> Actualizar
                             </button>
-                            <button class="btn btn-danger" onclick="window.location.href ='/rhumanos-web/contrataciones/findOne?idContratacion=${item.idContratacion}&opcion=2';return false;">
+                            <button class="btn btn-danger" onclick="window.location.href ='/ismac-recursos-humanos/contrataciones/findOne?idContratacion=${item.idContratacion}&opcion=2';return false;">
                                 <i class="fa-solid fa-trash"></i> Eliminar
                             </button>
                         </td>

@@ -15,7 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 @Component
 @Entity
@@ -42,6 +42,7 @@ public class Empleado {
 	private String nombre;
 	@Column(name="apellido")
 	private String apellido;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_nacimiento")
 	private Date  fechaNacimiento;
 	@Column(name="edad")

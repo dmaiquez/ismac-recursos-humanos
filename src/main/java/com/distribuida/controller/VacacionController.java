@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +26,10 @@ public class VacacionController {
 		@Qualifier("vacacionDAOImpl")
 		private VacacionDAO vacacionDAO;
 		
-		
 		@Autowired
 		private EmpleadoDAO empleadoDAO;
+		
+		
 		
 		@GetMapping("/findAll")      // path secundario
 		public String finAll(Model  model) {
@@ -48,15 +50,17 @@ public class VacacionController {
 		@GetMapping("/findOne")
 		public String findOne(@RequestParam("id_vacacion")@Nullable Integer id_vacacion
 				             ,@RequestParam("opcion")@Nullable Integer opcion
-				             ,Model model
+				             ,ModelMap modelMap
 				) {
 			
 		//	try {
 			
 				if(id_vacacion !=null) {
 					Vacacion vacacion = vacacionDAO.findOne(id_vacacion);
-					model.addAttribute("vacacion", vacacion);
+					modelMap.addAttribute("vacacion", vacacion);
 				}
+				
+				modelMap.addAttribute("empleados", empleadoDAO.findAll());
 	            if (opcion == 1) {
 	                return "vacaciones-add"; //Actualizacion
 	            } else {
@@ -86,16 +90,12 @@ public class VacacionController {
 		//	try {
 			
 				if(id_vacacion == null) {
-					Vacacion Vacacion = new Vacacion(0
-							, empleadoDAO.findOne(id_empleado) 
-							, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
+					Vacacion Vacacion = new Vacacion(0, empleadoDAO.findOne(id_empleado) , fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
 					vacacionDAO.add(Vacacion);
 					
 				}else {
 					
-					Vacacion vacacion = new Vacacion(id_vacacion
-							, empleadoDAO.findOne(id_empleado)
-							, fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
+					Vacacion vacacion = new Vacacion(id_vacacion, empleadoDAO.findOne(id_empleado), fecha_inicio_vacacion,fecha_fin_vacacion,total_dias_vacacion,vacacion_aprobado);
 					vacacionDAO.up(vacacion);
 					
 		//	} catch (Exception e) {

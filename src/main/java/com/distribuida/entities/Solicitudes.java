@@ -43,23 +43,36 @@ public class Solicitudes {
 	public Solicitudes() {}
 	
 	
-	public Solicitudes(int idSolicitudes, Date fechasolicitudpeticion, Date fechasolicitudrevision
-			,String estadosolicitud, String pdfsolicitud, String descripcion) {
-		
-				this.idSolicitud= idSolicitudes;
-				this.fechasolicitudpeticion= fechasolicitudpeticion;
-				this.fechasolicitudrevision=fechasolicitudrevision;
-				this.estadosolicitud=estadosolicitud;
-				this.pdfsolicitud=pdfsolicitud;
-				this.descripcion=descripcion;
-				//this.idEmpleado=idEmpleado;
-	}
+//	public Solicitudes(int idSolicitudes, Date fechasolicitudpeticion, Date fechasolicitudrevision
+//			,String estadosolicitud, String pdfsolicitud, String descripcion) {
+//		
+//				this.idSolicitud= idSolicitudes;
+//				this.fechasolicitudpeticion= fechasolicitudpeticion;
+//				this.fechasolicitudrevision=fechasolicitudrevision;
+//				this.estadosolicitud=estadosolicitud;
+//				this.pdfsolicitud=pdfsolicitud;
+//				this.descripcion=descripcion;
+//				//this.idEmpleado=idEmpleado;
+//	}
 
+	
+	public Solicitudes(int idSolicitud, Empleado empleado, Date fechasolicitudpeticion, Date fechasolicitudrevision,
+			String estadosolicitud, String pdfsolicitud, String descripcion) {
+		this.idSolicitud = idSolicitud;
+		this.empleado = empleado;
+		this.fechasolicitudpeticion = fechasolicitudpeticion;
+		this.fechasolicitudrevision = fechasolicitudrevision;
+		this.estadosolicitud = estadosolicitud;
+		this.pdfsolicitud = pdfsolicitud;
+		this.descripcion = descripcion;
+	}
 	
 
 	public int getIdSolicitud() {
 		return idSolicitud;
 	}
+
+
 
 	public void setIdSolicitud(int idSolicitud) {
 		this.idSolicitud = idSolicitud;

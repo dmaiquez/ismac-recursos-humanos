@@ -59,6 +59,8 @@ List<Contratacion> contrataciones = contratacionDAO.findAll();
 				Contratacion contratacion = contratacionDAO.findOne(idContratacion);
 				model.addAttribute("contratacion", contratacion);
 			}
+			
+			
 			// formulario  web Contratacions add se usa para agregar o actualizar. 
 			if(opcion ==  1) return "contrataciones-add" ;
 			else return "contrataciones-del";

@@ -8,20 +8,45 @@
 <meta charset="ISO-8859-1">
 <title>Contrataciones</title>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilos.css"/> 
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-table.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-table.min.css"/>  
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"/> 
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"/>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-image: url('${pageContext.request.contextPath}/resources/img/actualizar1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+              font-family: 'Times New Roman', Times, serif;/* Cambia el tipo de letra global */
+        }
+        
+        h1 {
+            color: #c2c8ec;
+        }
+        
+	  .form-group {
+            background: rgba(255, 255, 255, 0.5); /* Degradado de color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
 </head>
 <body>
 <nav></nav>
-	<section class="py-5 px-5">
-	
+	<section class="py-5 px-5" >
+		<h1> AGREGAR O ACTUALIZAR CONTRATOS</h1>
+		 
 			<div class="container" >
-	<h1> AGREGAR CONTRATACIONES</h1>
+		
+   <i class="fas fa-user-plus fa-3x" ></i>
 
  	<form action="add" method="post" class="needs-validation" novalidate>
  	<input type="hidden"  id="idContratacion" name= "idContratacion" value="${contratacion.idContratacion}" required/> 
  	
- 	idCiudad
  	<div class=" form-group" >
 		<label for="idCiudad" class="form-label">ID-Cíudad</label>
  	<input class="form-control" type="number"  id="idCiudad" name= "idCiudad" value="${contratacion.idCiudad}" required/> 
@@ -72,10 +97,11 @@
  	<input class="form-control" type="number"  id="vacanteSueldoEstimado" name= "vacanteSueldoEstimado" value="${contratacion.vacanteSueldoEstimado}" required/> 
  	</div>
  	
- 	<button class=" btn btn-primary" type="submit">Guardar</button>
+ 	<button class=" btn btn-primary" type="submit">
+ 	 <i class="fa-solid fa-file-arrow-down" ></i>   Guardar</button>
  
- 		<button class=" btn btn-primary" onclick="window.location.href ='/rhumanos-web/contrataciones/findAll';return false;">
- 					Cancelar y Regresar
+ 		<button class=" btn btn-primary" onclick="window.location.href ='/ismac-recursos-humanos/contrataciones/findAll';return false;">
+ 				<i class="fa-solid fa-rectangle-xmark" ></i>   Cancelar
  					</button>
  				</form>
  			</div>

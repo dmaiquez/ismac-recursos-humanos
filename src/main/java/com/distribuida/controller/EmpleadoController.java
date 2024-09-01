@@ -4,9 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,13 +50,16 @@ public class EmpleadoController {
 	@GetMapping("/findOne") //Actualizar o eliminar
 	public String findOne(@RequestParam("idEmpleado") @Nullable Integer idEmpleado
 						,@RequestParam("opcion")@Nullable Integer opcion
-						,Model model
+						,ModelMap modelMap
 			) {
 		
 		if(idEmpleado !=null) {
 			Empleado empleado =empleadoDAO.findOne(idEmpleado);
-			model.addAttribute("empleado",empleado);
+			modelMap.addAttribute("empleado",empleado);
 		}
+		
+		modelMap.addAttribute("ciudades", ciudadDAO.findAll());
+		
 		if(opcion == 1) return "empleados-add"; 
 		else return "empleados-del";
 	}
@@ -62,20 +67,20 @@ public class EmpleadoController {
 	@PostMapping("/add")
 	public String add(@RequestParam("idEmpleado")@Nullable Integer idEmpleado
 					 ,@RequestParam("idCiudad")@Nullable Integer idciudad
-					 ,@RequestParam("cedula_ruc")@Nullable String cedula_ruc
+					 ,@RequestParam("cedulaRuc")@Nullable String cedula_ruc
 					 ,@RequestParam("nombre")@Nullable String nombre
 					 ,@RequestParam("apellido")@Nullable String apellido
-					 ,@RequestParam("fecha_nacimiento")@Nullable Date fecha_nacimiento
+					 ,@RequestParam("fechaNacimiento")@Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha_nacimiento
 					 ,@RequestParam("edad")@Nullable Integer edad
 					 ,@RequestParam("genero")@Nullable String genero
 					 ,@RequestParam("nacionalidad")@Nullable String nacionalidad
 					 ,@RequestParam("direccion")@Nullable String direccion
 					 ,@RequestParam("telefono")@Nullable String telefono
 					 ,@RequestParam("correo")@Nullable String correo
-					 ,@RequestParam("codigo_postal")@Nullable String codigo_postal
-					 ,@RequestParam("estado_civil")@Nullable String estado_civil
-					 ,@RequestParam("num_cargas_familiares")@Nullable Integer num_cargas_familiares
-					 ,@RequestParam("estado_empleado")@Nullable Integer estado_empleado
+					 ,@RequestParam("codigoPostal")@Nullable String codigo_postal
+					 ,@RequestParam("estadoCivil")@Nullable String estado_civil
+					 ,@RequestParam("numCargasFamiliares")@Nullable Integer num_cargas_familiares
+					 ,@RequestParam("estadoEmpleado")@Nullable Integer estado_empleado
 					 ,@RequestParam("foto")@Nullable String foto
 					 ,Model model
 					) {
