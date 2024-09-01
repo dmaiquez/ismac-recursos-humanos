@@ -80,8 +80,8 @@
             <thead>
                 <tr>
                     <th data-field="ID CONTRATACIONES" data-sortable="true">ID-Contratacion</th>
-                    <th data-field="ID CIUDAD" data-sortable="true">ID-Ciudad</th>
-                    <th data-field="ID DEPARTAMENTOS" data-sortable="true">ID-Departamento</th>
+                    <th data-field="Ciudad" data-sortable="true">Ciudad</th>
+                    <th data-field="Departamento" data-sortable="true">Departamento</th>
                     <th data-field="VACANTES-FECHA" data-sortable="true">Vacante-Fecha</th>
                     <th data-field="VACANTE-PUESTOS" data-sortable="true">Vacante-Puesto</th>
                     <th data-field="VACANTE-DESCRIPCIÓN" data-sortable="true">Vacante-Descripcion</th>
@@ -97,8 +97,8 @@
                 <c:forEach var="item" items="${keyContrataciones}">
                     <tr>
                         <td>${item.idContratacion}</td>
-                        <td>${item.idCiudad}</td>
-                        <td>${item.idDepartamento}</td>
+                        <td>${item.ciudad.ciudad}</td>
+                        <td>${item.departamento.departamento}</td>
                         <td>${item.vacanteFecha}</td>
                         <td>${item.vacantePuesto}</td>
                         <td>${item.vacanteDescripcion}</td>

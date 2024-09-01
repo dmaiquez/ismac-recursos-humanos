@@ -48,13 +48,26 @@
  	<input type="hidden"  id="idContratacion" name= "idContratacion" value="${contratacion.idContratacion}" required/> 
  	
  	<div class=" form-group" >
-		<label for="idCiudad" class="form-label">ID-Cíudad</label>
- 	<input class="form-control" type="number"  id="idCiudad" name= "idCiudad" value="${contratacion.idCiudad}" required/> 
+		<label for="idCiudad" class="form-label">Ciudad</label>
+ 			   <select class="form-select" id="idCiudad" name="idCiudad" required>
+               		<c:forEach var="item" items="${ciudades}">
+               			<option value="${item.idCiudad}" ${item.idCiudad == contratacion.ciudad.idCiudad? 'selected': ''} >${item.ciudad}</option>
+               		</c:forEach>
+               	</select>
+ 	
+ <%-- 	    <input class="form-control" type="number"  id="idCiudad" name= "idCiudad" value="${contratacion.idCiudad}" required/> 
+  --%>	
  	</div>
  	
  	<div class=" form-group" >
-	<label for="idDepartamento" class="form-label">ID-Departamento</label>
- 	<input class="form-control" type="number"  id="idDepartamento" name= "idDepartamento" value="${contratacion.idDepartamento}" required/> 
+	<label for="idDepartamento" class="form-label">Departamento</label>
+ 		   <select class="form-select" id="idDepartamento" name="idDepartamento" required>
+               		<c:forEach var="item" items="${departamentos}">
+               			<option value="${item.idDepartamento}" ${item.idDepartamento == contratacion.departamento.idDepartamento? 'selected': ''} >${item.departamento}</option>
+               		</c:forEach>
+               	</select>
+ 	
+ 	<%-- <input class="form-control" type="number"  id="idDepartamento" name= "idDepartamento" value="${contratacion.idDepartamento}" required/>  --%>
  	</div>
  	
 <div class=" form-group" >
@@ -94,7 +107,7 @@
  	
  	<div class=" form-group" >
 		<label for="vacanteSueldoEstimado" class="form-label">Vacante-Sueldo-Estimado</label>
- 	<input class="form-control" type="number"  id="vacanteSueldoEstimado" name= "vacanteSueldoEstimado" value="${contratacion.vacanteSueldoEstimado}" required/> 
+ 	<input class="form-control" type="number" step="any"  id="vacanteSueldoEstimado" name= "vacanteSueldoEstimado" value="${contratacion.vacanteSueldoEstimado}" required/> 
  	</div>
  	
  	<button class=" btn btn-primary" type="submit">

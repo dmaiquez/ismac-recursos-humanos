@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,16 +52,17 @@ List<Contratacion> contrataciones = contratacionDAO.findAll();
 	@GetMapping("/findOne")    // findOne se suele utilizar para actualizar o borrar un dato de un formulario
 	public String findOne(@RequestParam("idContratacion")@Nullable Integer idContratacion
 			,@RequestParam("opcion")@Nullable Integer opcion
-			,Model model
+			,ModelMap modelMap
 			) {
 		
 		//try{
 			if(idContratacion !=null) {
 				Contratacion contratacion = contratacionDAO.findOne(idContratacion);
-				model.addAttribute("contratacion", contratacion);
+				modelMap.addAttribute("contratacion", contratacion);
 			}
 			
-			
+			modelMap.addAttribute("ciudades", ciudadDAO.findAll());
+			modelMap.addAttribute("departamentos", departamentoDAO.findAll());
 			// formulario  web Contratacions add se usa para agregar o actualizar. 
 			if(opcion ==  1) return "contrataciones-add" ;
 			else return "contrataciones-del";

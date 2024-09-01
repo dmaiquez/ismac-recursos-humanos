@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "ciudad")
+@Table(name = "departamento")
 public class Departamento {
 
 	//departamento

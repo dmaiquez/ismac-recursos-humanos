@@ -50,8 +50,8 @@ public void add(Contratacion contratacion) {
 	Session session = sessionFactory.getCurrentSession();
 
 @SuppressWarnings("rawtypes")
-Query query = session.createQuery(" UPDATE Contratacion co SET co.idCiudad =: keyIdCiudad" + 
-								"            , co.idDepartamento =: keyIdDepartamento"+ 
+Query query = session.createQuery(" UPDATE Contratacion co SET co.ciudad.idCiudad =: keyIdCiudad" + 
+								"            , co.departamento.idDepartamento =: keyIdDepartamento"+ 
 								"             ,co.vacanteFecha=: keyVacanteFecha" + 
 								"               ,co.vacantePuesto =: keyVacantePuesto" + 
 								"               ,co.vacanteDescripcion=: keyVacanteDescripcion" + 
