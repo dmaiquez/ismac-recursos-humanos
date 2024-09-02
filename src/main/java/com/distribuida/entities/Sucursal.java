@@ -18,15 +18,15 @@ import org.springframework.stereotype.Component;
 public class Sucursal {
 
 	//  sucursal
-	// id_sucursal, id_canton, sucursal, descripcion
+	// id_sucursal, id_Ciudad, sucursal, descripcion
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name= "id_sucursal")
 	private int idSucursal;
 	
-	@JoinColumn(name="id_canton")
+	@JoinColumn(name="id_ciudad")
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	private Canton canton;
+	private Ciudad ciudad;
 	
 	@Column(name= "sucursal")
 	private String sucursal;
@@ -36,10 +36,10 @@ public class Sucursal {
 	
 	public Sucursal() {}
 
-	public Sucursal(int idSucursal, Canton canton, String sucursal, String descripcion) {
+	public Sucursal(int idSucursal, Ciudad ciudad, String sucursal, String descripcion) {
 
 		this.idSucursal = idSucursal;
-		this.canton = canton;
+		this.ciudad = ciudad;
 		this.sucursal = sucursal;
 		this.descripcion = descripcion;
 	}
@@ -52,12 +52,12 @@ public class Sucursal {
 		this.idSucursal = idSucursal;
 	}
 
-	public Canton getCanton() {
-		return canton;
+	public Ciudad getCiudad() {
+		return ciudad;
 	}
 
-	public void setCanton(Canton canton) {
-		this.canton = canton;
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
 	}
 
 	public String getSucursal() {
@@ -78,7 +78,7 @@ public class Sucursal {
 
 	@Override
 	public String toString() {
-		return "Sucursal [idSucursal=" + idSucursal + ", canton=" + canton + ", sucursal=" + sucursal + ", descripcion="
+		return "Sucursal [idSucursal=" + idSucursal + ", ciudad=" + ciudad + ", sucursal=" + sucursal + ", descripcion="
 				+ descripcion + "]";
 	}
 	

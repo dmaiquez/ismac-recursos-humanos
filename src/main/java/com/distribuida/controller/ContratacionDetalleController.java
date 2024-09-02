@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,13 +61,19 @@ public class ContratacionDetalleController {
 	@GetMapping("/findOne") //Actualizar o eliminar
 	public String findOne(@RequestParam("idContratacionDetalle") @Nullable Integer idContratacionDetalle
 						,@RequestParam("opcion")@Nullable Integer opcion
-						,Model model
+						,ModelMap modelMap
 			) {
 		
 		if(idContratacionDetalle !=null) {
 			ContratacionDetalle contratacionDetalle =contratacionDetalleDAO.findOne(idContratacionDetalle);
-			model.addAttribute("contratacionDetalle",contratacionDetalle);
+			modelMap.addAttribute("contratacionDetalle",contratacionDetalle);
 		}
+		
+		modelMap.addAttribute("contrataciones", contratacionDAO.findAll());
+		modelMap.addAttribute("empleados", empleadoDAO.findAll());
+		modelMap.addAttribute("tiposContratos", tipoContratoDAO.findAll());
+		modelMap.addAttribute("sucursales", sucursalDAO.findAll());
+		
 		if(opcion == 1) return "contratacionDetalle-add"; 
 		else return "contratacionDetalle-del";
 	}

@@ -18,7 +18,7 @@ public class TipoContrato {
 	// id_tipo_contrato, tipo_contrato, descripcion
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name= "id_sucursal")
+	@Column(name= "id_tipo_contrato")
 	private int idTipoContrato;
 	@Column(name= "tipo_contrato")
 	private String tipoContrato;

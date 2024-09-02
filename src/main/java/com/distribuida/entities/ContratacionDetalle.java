@@ -87,11 +87,11 @@ public class ContratacionDetalle {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_inicio_contratacion")
-	private java.sql.Date fechaInicioContratacion;
+	private Date fechaInicioContratacion;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name="fecha_fin_contratacion")
-	private java.sql.Date fechaFinContratacion;
+	private Date fechaFinContratacion;
 	@Column(name="hoja_vida")
 	private String hojaVida;
 	@Column(name="foto")
@@ -102,7 +102,7 @@ public class ContratacionDetalle {
 	public ContratacionDetalle(int idContratacionDetalle, Contratacion contratacion, Empleado empleado, TipoContrato tipoContrato, Sucursal sucursal, String academiaTitulo, String academiaPais
 			, String academiaNivel, String academiaArea, String academiaInstitucion, String academiaNivelEstado, String academiaCertificado, String academiaNivelIdiomaIngles
 			, String academiaNivelIdiomaOtro, String explabNivel, int explabTiempoAnios, Double sueldoEstimado, Double sueldoAprobado, int diasVacaciones, String aprobadoContratacion
-			, java.sql.Date  fechaInicioContratacion, java.sql.Date  fechaFinContratacion, String hojaVida,String foto ) {
+			, Date  fechaInicioContratacion, Date  fechaFinContratacion, String hojaVida,String foto ) {
 		
 		this.idContratacionDetalle = idContratacionDetalle;
 		this.contratacion = contratacion;

@@ -64,7 +64,7 @@
 				 	<thead>
 				 		<tr style="background-color:lightblue;">
 					 		<th data-field="Id Contratación Detalle" data-sortable="true"> Contratación Detalle</th>
-					 		<th data-field="Contratación" data-sortable="true"> Contratación</th>
+					 		<th data-field="Contratación" data-sortable="true"> Contratación (Vacante)</th>
 					 		<th data-field="Empleado" data-sortable="true"> Empleado</th>
 					 		<th data-field="Tipo Contrato" data-sortable="true"> Tipo Contrato</th>
 					 		<th data-field="Sucursal" data-sortable="true"> Sucursal</th>
@@ -98,10 +98,10 @@
 				 	
 					 		<tr>
 						 		<td>${item.idContratacionDetalle}</td>
-								<td>${item.idContratacion}</td>
-								<td>${item.idEmpleado}</td>
-								<td>${item.idTipoContrato}</td>
-								<td>${item.idSucursal}</td>
+								<td>${item.contratacion.vacantePuesto}</td>
+								<td>${item.empleado.nombre} ${item.empleado.apellido}</td>
+								<td>${item.tipoContrato.tipoContrato}</td>
+								<td>${item.sucursal.sucursal}</td>
 								<td>${item.academiaTitulo}</td>
 								<td>${item.academiaPais}</td>
 					 			<td>${item.academiaNivel}</td>

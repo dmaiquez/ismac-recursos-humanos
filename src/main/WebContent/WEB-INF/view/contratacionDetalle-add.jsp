@@ -19,7 +19,7 @@
 		<section class="py-5 px-5">
 			<div class="container" >
 			
-				<form action="add" method="post">
+				<form action="add" method="post" class="needs-validation" novalidate>
 					<h1>Clientes
 						<i class="fa-regular fa-user"></i>
 					</h1>
@@ -27,53 +27,74 @@
 					<input type="hidden" id="idContratacionDetalle" name="idContratacionDetalle" value="${contratacionDetalle.idContratacionDetalle}"/>
 					
 					<div class="form-group">
-						<label for="idContratacion" class="form-label">Contratación ID</label>
-						<input class="form-control" type="number" id="idContratacion" name="idContratacion" value="${contratacionDetalle.idContratacion}"/>
+						<label for="idContratacion" class="form-label">Contratación</label>
+						<select class="form-select" id="idContratacion" name="idContratacion" required>
+		               		<c:forEach var="item" items="${contrataciones}">
+		               			<option value="${item.idContratacion}" ${item.idContratacion == contratacionDetalle.contratacion.idContratacion? 'selected': ''} >${item.vacantePuesto}</option>
+		               		</c:forEach>
+		               	</select>						
+<%-- 						<input class="form-control" type="number" id="idContratacion" name="idContratacion" value="${contratacionDetalle.idContratacion}"/> --%>
 					</div>
 					
 					<div class="form-group">
-						<label for="idEmpleado" class="form-label">Empleado ID</label>
-						<input class="form-control" type="number" id="idEmpleado" name="idEmpleado" value="${contratacionDetalle.idEmpleado}"/>
+						<label for="idEmpleado" class="form-label">Empleado</label>
+						<select class="form-select" id="idEmpleado" name="idEmpleado" required>
+		               		<c:forEach var="item" items="${empleados}">
+		               			<option value="${item.idEmpleado}" ${item.idEmpleado == contratacionDetalle.empleado.idEmpleado? 'selected': ''} >${item.nombre} ${item.apellido}</option>
+		               		</c:forEach>
+		               	</select>						
+						<%-- <input class="form-control" type="number" id="idEmpleado" name="idEmpleado" value="${contratacionDetalle.idEmpleado}"/> --%>
 					</div>
 					
 					<div class="form-group">
-						<label for="idTipoContrato" class="form-label">Tipo Contrato ID</label>
-						<input class="form-control" type="number" id="idTipoContrato" name="idTipoContrato" value="${contratacionDetalle.idTipoContrato}"/>
+						<label for="idTipoContrato" class="form-label">Tipo Contrato</label>
+						<select class="form-select" id="idTipoContrato" name="idTipoContrato" required>
+		               		<c:forEach var="item" items="${tiposContratos}">
+		               			<option value="${item.idTipoContrato}" ${item.idTipoContrato == contratacionDetalle.tipoContrato.idTipoContrato? 'selected': ''} >${item.tipoContrato}</option>
+		               		</c:forEach>
+		               	</select>
+						
+						<%-- <input class="form-control" type="number" id="idTipoContrato" name="idTipoContrato" value="${contratacionDetalle.idTipoContrato}"/> --%>
 					</div>
 					
 					<div class="form-group">					
-						<label for="idSucursal" class="form-label">Sucursal ID</label>
-						<input class="form-control" type="number" id="idSucursal" name="idSucursal" value="${contratacionDetalle.idSucursal}"/>
+						<label for="idSucursal" class="form-label">Sucursal</label>
+						<select class="form-select" id="idSucursal" name="idSucursal" required>
+		               		<c:forEach var="item" items="${sucursales}">
+		               			<option value="${item.idSucursal}" ${item.idSucursal == contratacionDetalle.sucursal.idSucursal? 'selected': ''} >${item.sucursal}</option>
+		               		</c:forEach>
+		               	</select>												
+						<%-- <input class="form-control" type="number" id="idSucursal" name="idSucursal" value="${contratacionDetalle.idSucursal}"/> --%>
 					</div>
 					
 					<div class="form-group">					
 						<label for="academiaTitulo" class="form-label">Academia Título</label>
-						<input class="form-control" type="text" id="academiaTitulo" name="academiaTitulo" value="${contratacionDetalle.academiaTitulo}"/>
+						<input class="form-control" type="text" id="academiaTitulo" name="academiaTitulo" value="${contratacionDetalle.academiaTitulo}" required/>
 					</div>
 					
 					<div class="form-group">					
 						<label for="academiaPais" class="form-label">Academia País</label> 
-						<input class="form-control" type="text" id="academiaPais" name="academiaPais" value="${contratacionDetalle.academiaPais}"/>
+						<input class="form-control" type="text" id="academiaPais" name="academiaPais" value="${contratacionDetalle.academiaPais}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="academiaNivel" class="form-label">Academia Nivel</label> 
-						<input class="form-control" type="text" id="academiaNivel" name="academiaNivel" value="${contratacionDetalle.academiaNivel}"/>
+						<input class="form-control" type="text" id="academiaNivel" name="academiaNivel" value="${contratacionDetalle.academiaNivel}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="academiaArea" class="form-label">Academia Area</label> 
-						<input class="form-control" type="text" id="academiaArea" name="academiaArea" value="${contratacionDetalle.academiaArea}"/>
+						<input class="form-control" type="text" id="academiaArea" name="academiaArea" value="${contratacionDetalle.academiaArea}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="academiaInstitucion" class="form-label">Academia Institución</label> 
-						<input class="form-control" type="text" id="academiaInstitucion" name="academiaInstitucion" value="${contratacionDetalle.academiaInstitucion}"/>
+						<input class="form-control" type="text" id="academiaInstitucion" name="academiaInstitucion" value="${contratacionDetalle.academiaInstitucion}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="academiaNivelEstado" class="form-label">Academia Nivel Estado</label> 
-						<input class="form-control" type="text" id="academiaNivelEstado" name="academiaNivelEstado" value="${contratacionDetalle.academiaNivelEstado}"/>
+						<input class="form-control" type="text" id="academiaNivelEstado" name="academiaNivelEstado" value="${contratacionDetalle.academiaNivelEstado}" required/>
 					</div>
 					
 					<div class="form-group">
@@ -83,7 +104,7 @@
 					
 					<div class="form-group">							
 						<label for="academiaNivelIdiomaIngles" class="form-label">Academia Nivel Idioma Ingles</label>  
-						<input class="form-control" type="text" id="academiaNivelIdiomaIngles" name="academiaNivelIdiomaIngles" value="${contratacionDetalle.academiaNivelIdiomaIngles}"/>
+						<input class="form-control" type="text" id="academiaNivelIdiomaIngles" name="academiaNivelIdiomaIngles" value="${contratacionDetalle.academiaNivelIdiomaIngles}" required/>
 					</div>
 					
 					<div class="form-group">
@@ -93,42 +114,42 @@
 					
 					<div class="form-group">
 						<label for="explabNivel" class="form-label">Explab Nivel</label> 
-						<input class="form-control" type="text" id="explabNivel" name="explabNivel" value="${contratacionDetalle.explabNivel}"/>
+						<input class="form-control" type="text" id="explabNivel" name="explabNivel" value="${contratacionDetalle.explabNivel}" required/>
 					</div>
 					
 					<div class="form-group">	
 						<label for="explabTiempoAnios" class="form-label">Explab Tiempo Años</label> 
-						<input class="form-control" type="number" id="explabTiempoAnios" name="explabTiempoAnios" value="${contratacionDetalle.explabTiempoAnios}"/>
+						<input class="form-control" type="number" id="explabTiempoAnios" name="explabTiempoAnios" value="${contratacionDetalle.explabTiempoAnios}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="sueldoEstimado" class="form-label">Sueldo estimado</label>  
-						<input class="form-control" type="number" id="sueldoEstimado" name="sueldoEstimado" value="${contratacionDetalle.sueldoEstimado}"/>
+						<input class="form-control" type="number" id="sueldoEstimado" name="sueldoEstimado" value="${contratacionDetalle.sueldoEstimado}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="sueldoAprobado" class="form-label">Sueldo Aprobado</label>  
-						<input class="form-control" type="number" id="sueldoAprobado" name="sueldoAprobado" value="${contratacionDetalle.sueldoAprobado}"/>
+						<input class="form-control" type="number" id="sueldoAprobado" name="sueldoAprobado" value="${contratacionDetalle.sueldoAprobado}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="diasVacaciones" class="form-label">Días Vacaciones</label>   
-						<input class="form-control" type="number" id="diasVacaciones" name="diasVacaciones" value="${contratacionDetalle.diasVacaciones}"/>
+						<input class="form-control" type="number" id="diasVacaciones" name="diasVacaciones" value="${contratacionDetalle.diasVacaciones}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="aprobadoContratacion" class="form-label">Aprobado Contratación</label>   
-						<input class="form-control" type="text" id="aprobadoContratacion" name="aprobadoContratacion" value="${contratacionDetalle.aprobadoContratacion}"/>
+						<input class="form-control" type="text" id="aprobadoContratacion" name="aprobadoContratacion" value="${contratacionDetalle.aprobadoContratacion}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="fechaInicioContratacion" class="form-label">Fecha Inicio Contratación</label>   
-						<input class="form-control" type="date" id="fechaInicioContratacion" name="fechaInicioContratacion" value="${fn:substring(contratacionDetalle.fechaInicioContratacion,0,10)}"/>
+						<input class="form-control" type="date" id="fechaInicioContratacion" name="fechaInicioContratacion" value="${fn:substring(contratacionDetalle.fechaInicioContratacion,0,10)}" required/>
 					</div>
 					
 					<div class="form-group">
 						<label for="fechaFinContratacion" class="form-label">Fecha Fin Contratación</label>    
-						<input class="form-control" type="date" id="fechaFinContratacion" name="fechaFinContratacion" value="${fn:substring(contratacionDetalle.fechaFinContratacion,0,10)}"/>
+						<input class="form-control" type="date" id="fechaFinContratacion" name="fechaFinContratacion" value="${fn:substring(contratacionDetalle.fechaFinContratacion,0,10)}" required/>
 					</div>
 					
 					<div class="form-group">
