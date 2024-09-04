@@ -276,7 +276,7 @@
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2 active" href="${pageContext.request.contextPath}/empleados/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/empleados/findAll">
 	                <svg class="bi"><use xlink:href="#people"/></svg>
 	                Empleados
 	              </a>
@@ -315,7 +315,7 @@
 	          </h6>
 	          <ul class="nav flex-column mb-auto">
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/reportes/reporte1">
+	              <a class="nav-link d-flex align-items-center gap-2 active" href="${pageContext.request.contextPath}/reportes/reporte1">
 	                <svg class="bi"><use xlink:href="#file-earmark-text"/></svg>
 	                Reporte 1
 	              </a>
@@ -353,22 +353,7 @@
    
    
    
-			   
-					<h1>EMPLEADOS</h1>
-					
-					<form action="del" method="get">
-					
-							<input type="hidden" id="idEmpleado" name= "idEmpleado" value="${empleado.idEmpleado}"/>
-							<strong>¿Desea eliminar el dato?</strong>
-							<br/>
-							<button type ="submit"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
-							
-							<button onclick="window.location.href='/ismac-recursos-humanos/empleados/findAll'; return false;"><i class="fa-solid fa-ban" style="color: red;"></i>
-							Cancelar
-										</button>
-							
-					
-					</form>
+   
    
    
    
@@ -398,4 +383,3 @@
 </body>
 </html>
     
-
