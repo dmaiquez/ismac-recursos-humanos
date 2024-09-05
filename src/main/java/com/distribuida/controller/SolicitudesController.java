@@ -1,9 +1,11 @@
 package com.distribuida.controller;
 
 import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +50,7 @@ public class SolicitudesController {
 	
 		if(idSolicitud != null) {
 			Solicitudes solicitud = solicitudesDAO.findOne(idSolicitud);
-			modelMap.addAttribute("solicitudes", solicitud);
+			modelMap.addAttribute("solicitud", solicitud);
 			
 		}
 		modelMap.addAttribute("empleados", empleadoDAO.findAll());
@@ -61,19 +63,19 @@ public class SolicitudesController {
 	@PostMapping("/add")
 	public String add(@RequestParam("idSolicitud")@Nullable Integer idSolicitud
 			,@RequestParam("idEmpleado")@Nullable Integer id_empleado
-			,@RequestParam("fecha_solicitud_peticion")@Nullable String fecha_solicitud_peticion
-			,@RequestParam("fecha_solicitud_revision")@Nullable String fecha_solicitud_revision
-			,@RequestParam("estado_solicitud")@Nullable String estado_solicitud
-			,@RequestParam("pdf_solicitud")@Nullable String pdf_solicitud
+			,@RequestParam("fechasolicitudpeticion")@Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha_solicitud_peticion
+			,@RequestParam("fechasolicitudrevision")@Nullable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fecha_solicitud_revision
+			,@RequestParam("estadosolicitud")@Nullable String estado_solicitud
+			,@RequestParam("pdfsolicitud")@Nullable String pdf_solicitud
 			,@RequestParam("descripcion")@Nullable String descripcion
 			,Model model
 			){
 		//try{
-		if(idSolicitud ==null) {
-			Solicitudes solicitudes=new Solicitudes(0, empleadoDAO.findOne(id_empleado), new Date(),new Date(), "En revision","pdf1","Revision de la cafetera");
+		if(idSolicitud == null) {
+			Solicitudes solicitudes=new Solicitudes(0, empleadoDAO.findOne(id_empleado), fecha_solicitud_peticion,fecha_solicitud_revision, estado_solicitud,pdf_solicitud,descripcion);
 			solicitudesDAO.add(solicitudes);
 		}else {
-			Solicitudes solicitudes=new Solicitudes(idSolicitud, empleadoDAO.findOne(id_empleado),new Date(),new Date(), "En revision","pdf1","Revision de la cafetera");
+			Solicitudes solicitudes=new Solicitudes(idSolicitud, empleadoDAO.findOne(id_empleado), fecha_solicitud_peticion,fecha_solicitud_revision, estado_solicitud,pdf_solicitud,descripcion);
 			solicitudesDAO.up(solicitudes);
 		}
 	

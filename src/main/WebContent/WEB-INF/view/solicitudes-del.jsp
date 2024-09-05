@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/estilosdel.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">	    
@@ -104,7 +105,12 @@
       }
     </style>
 
-    
+    <style>
+        /* Asegurar que la tabla no tenga barras de desplazamiento */
+        .table-responsive {
+            overflow: hidden;
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -288,19 +294,19 @@
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2 active" href="${pageContext.request.contextPath}/pagos/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/pagos/findAll">
 	                <svg class="bi"><use xlink:href="#cart"/></svg>
 	                Pagos
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/solicitudes/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2 active" href="${pageContext.request.contextPath}/solicitudes/findAll">
 	                <svg class="bi"><use xlink:href="#list"/></svg>
 	                Solicitudes
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/vacaciones/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2 " href="${pageContext.request.contextPath}/vacaciones/findAll">
 	                <svg class="bi"><use xlink:href="#puzzle"/></svg>
 	                Vacaciones
 	              </a>
@@ -351,30 +357,22 @@
     	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
    
    
-   
-   
-   
-   
-   
-   
-   
-		<h1>Desea eliminar el dato</h1>
-			<form action="del" method="get">
-
-					<input type="hidden" id="idSolicitud" name="idSolicitud" value="${solicitudes.idSolicitud}"/>
-					<strong>¿Desea Eliminar el Dato?</strong>
-					<br>
-					<button type="submit">Aceptar</button>
-	
- 			</form>
- 
- 			<button onclick="window.location.href ='/ismac-recursos-humanos/solicitudes/findAll';return false;">
- 			Cancelar y Regresar
- 			</button>
-   
-   
-   
-
+					<section class="py-80 px-80">
+					<div class="container">
+					<h1>Desea eliminar el dato</h1>
+						<form action="del" method="get">
+					
+								<input type="hidden" id="idSolicitud" name="idSolicitud" value="${solicitud.idSolicitud}"/>
+									<strong>¿Desea Eliminar el Dato?</strong>
+										<br>
+											<button class="btn btn-danger" type="submit">Aceptar</button>
+									 		<button class="btn btn-info" onclick="window.location.href ='/ismac-recursos-humanos/solicitudes/findAll';return false;">
+									 					Cancelar y Regresar
+									 					</button>
+									 								 					
+					 	</form>
+					 	</div>
+					 </section>
   
     		</main>
   		</div>
@@ -392,7 +390,60 @@
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard.js"></script></body>    
     <script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
-
 </body>
 </html>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

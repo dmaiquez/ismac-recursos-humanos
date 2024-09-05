@@ -104,7 +104,12 @@
       }
     </style>
 
-    
+    <style>
+        /* Asegurar que la tabla no tenga barras de desplazamiento */
+        .table-responsive {
+            overflow: hidden;
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -300,7 +305,7 @@
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/vacaciones/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2 " href="${pageContext.request.contextPath}/vacaciones/findAll">
 	                <svg class="bi"><use xlink:href="#puzzle"/></svg>
 	                Vacaciones
 	              </a>
@@ -351,55 +356,62 @@
     	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
    
    
-   
-   
-					   
-					   <h1>
-						Solicitudes
-					</h1>
-						<button onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findOne?&opcion=1'; return false;">
-							Agregar
-							</button>
-					<table>
-					<thead>
-					<tr>
-					 	<th>idSolicitud</th>
-					 	<th>Empleado</th>
-					 	<th>Fecha Solicitud Peticion</th>
-					 	<th>Fecha Solicitud Revision</th>
-					 	<th>Estado Solicitud</th>
-					 	<th>Pdf Solicitud</th>
-					 	<th>Descripcion</th>
-					 	
-					</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="item" items="${solicitudes}">
-						<tr> 
-							<td>${item.idSolicitud}</td>
-							<td>${item.empleado.nombre} ${item.empleado.apellido}</td>
-							<td>${fn:substring(item.fechasolicitudpeticion,0,10)}</td>
-							<td>${fn:substring(item.fechasolicitudrevision,0,10)}</td>
-							<td>${item.estadosolicitud}</td>
-							<td>${item.pdfsolicitud}</td>
-							<td>${item.descripcion}</td>
-							
-							<td>
-							<button onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findOne?idSolicitud=${item.idSolicitud}&opcion=1'; return false;">
-							Actualizar
-							</button>
-							
-							<button onclick="window.location.href ='/ismac-recursos-humanos/solicitudes/findOne?idSolicitud=${item.idSolicitud}&opcion=2';return false;">
-							Eliminar
-							</button>
-							
-							
-							</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-					</table>
-   
+
+				   
+				<section class="px-5, py-5">
+				<div class="container">
+				<h1 style="text-align: center">Solicitudes</h1>
+				<div class="container" style="text-align: center;">
+					<button class="btn btn-primary" onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findOne?&opcion=1'; return false;">
+						<i class="fa-solid fa-circle-plus"></i>
+					</button>
+						</div>
+						<div class="table-responsive">
+							<table id="tabla1"
+				                   name="tabla1"
+				                   data-height="600"
+				                   data-search="true"
+				                   data-pagination="true"
+				                   data-toggle="tabla1"
+				                   data-toolbar=".toolbar"
+				                   class="table table-striped table-sm">
+								<thead>
+									<tr>
+									<th data-field="IdSolicitud" data-sortable="true">idSolicitud</th>
+								 	<th data-field="Fecha Solicitud Petición" data-sortable="true">Fecha Solicitud Peticion</th>
+								 	<th data-field="Fecha Solicitud Revisión" data-sortable="true">Fecha Solicitud Revision</th>
+								 	<th data-field="Estado Solicitud" data-sortable="true">Estado Solicitud</th>
+								 	<th data-field="Pdf Solicitud" data-sortable="true">Pdf Solicitud</th>
+								 	<th data-field="Descripción" data-sortable="true">Descripción</th>
+								 	
+								 </tr>
+								</thead>
+									<tbody>
+										<c:forEach var="item" items="${solicitudes}">
+											<tr> 
+												<td>${item.idSolicitud}</td>
+												<td>${item.empleado.nombre} ${item.empleado.apellido}</td>
+												<td>${fn:substring(item.fechasolicitudpeticion,0,10)}</td>
+												<td>${fn:substring(item.fechasolicitudrevision,0,10)}</td>
+												<td>${item.estadosolicitud}</td>
+												<td>${item.pdfsolicitud}</td>
+												<td>${item.descripcion}</td>
+								<td>
+									<button class="btn btn-success" onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findOne?idSolicitud=${item.idSolicitud}&opcion=1'; return false;">
+										 <i class="fa-solid fa-arrows-rotate"></i>
+									</button>
+						
+									<button class="btn btn-danger" onclick="window.location.href ='/ismac-recursos-humanos/solicitudes/findOne?idSolicitud=${item.idSolicitud}&opcion=2';return false;">
+											<i class="fa-solid fa-trash-can"></i>
+									</button>
+								</td>
+										</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+				</section>   
    
    
    
@@ -423,7 +435,29 @@
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard.js"></script></body>    
     <script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
-
+    <!-- Inicialización de la tabla -->
+    <script>
+        var $tabla1 = $('#tabla1');
+        $(function() {
+            $tabla1.bootstrapTable({
+                sortReset: true
+            });
+        });
+    </script>
 </body>
 </html>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+

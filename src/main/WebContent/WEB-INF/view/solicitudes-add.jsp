@@ -104,7 +104,12 @@
       }
     </style>
 
-    
+    <style>
+        /* Asegurar que la tabla no tenga barras de desplazamiento */
+        .table-responsive {
+            overflow: hidden;
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -245,7 +250,7 @@
 	        <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
 	          <ul class="nav flex-column">
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="${pageContext.request.contextPath}/">
+	              <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="${pageContext.request.contextPath}/">
 	                <svg class="bi"><use xlink:href="#house-fill"/></svg>
 	                Home
 	              </a>
@@ -294,13 +299,13 @@
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/solicitudes/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2 active" href="${pageContext.request.contextPath}/solicitudes/findAll">
 	                <svg class="bi"><use xlink:href="#list"/></svg>
 	                Solicitudes
 	              </a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link d-flex align-items-center gap-2" href="${pageContext.request.contextPath}/vacaciones/findAll">
+	              <a class="nav-link d-flex align-items-center gap-2 " href="${pageContext.request.contextPath}/vacaciones/findAll">
 	                <svg class="bi"><use xlink:href="#puzzle"/></svg>
 	                Vacaciones
 	              </a>
@@ -351,46 +356,74 @@
     	<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
    
    
-   
-   
-   
-   
-   
-   
-				<h1>Solicitudes</h1>
-				<form action="add" method="post">
-				
-					<input type="hidden" name="idSolicitud" value="${solicitudes.idSolicitud}"/>
-					
-					Empleado 
-					<select id="idEmpleado" name ="idEmpleado">
-						<c:forEach var="item" items="${empleados}"> 
-						<option value="${item.idEmpleado}" ${item.idEmpleado == solicitudes.empleado.idEmpleado ? 'selected' : '' }>${item.nombre} ${item.apellido}</option>	
-					</c:forEach>
-						
-					</select>
-						<br/>
-					Fecha Solicitud Peticion
-					<input type="date" id="fechasolicitudpeticion" name="fecha_solicitud_peticion" value="${fn:substring(solicitud.fechasolicitudpeticion,0,10)}"/>
-					<br/>
-					Fecha Solicitud Revision
-					<input type="date" id="fechasolicitudrevision" name="fecha_solicitud_revision" value="${fn:substring(solicitud.fechasolicitudrevision,0,10) }"/>
-					<br/>
-					Estado Solicitud
-					<input type="text" id="estadosolicitud" name="estadosolicitud" value="${solicitud.estadosolicitud}"/>
-					<br/>
-					Pdf Solicitud
-					<input type="text" id="pdfsolicitud" name="pdfsolicitud" value="${solicitud.pdfsolicitud}"/>
-					<br/>
-					Descripcion
-					<input type="text" id="descripcion" name="descripcion" value="${solicitud.descripcion}"/>
-					<br/>
-					
-					<button type="submit">Guardar</button>
-					<button onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findAll';return false;">
-					Cancelar
-					</button>
-				 </form>
+
+				 	<section class="py-5 px-5">
+									<div class="container">
+							<h1>Solicitudes</h1>
+							<form action="add" method="post" class="needs-validation" novalidate>
+								
+								<input type="hidden" id="idSolicitud" name="idSolicitud" value="${solicitud.idSolicitud}"required/>
+								
+								  
+							            <div class="form-group">
+							                <label for="idEmpleado" class="form-label">Id Empleado</label>
+							               	
+							               	<select class="form-select" id="idEmpleado" name="idEmpleado" required>
+							               		<c:forEach var="item" items="${empleados}">
+							               			<option value="${item.idEmpleado}" ${item.idEmpleado == solicitud.empleado.idEmpleado? 'selected': ''} >${item.nombre} ${item.apellido}</option>
+							               		</c:forEach>
+							               	</select>
+							                
+							<%--                 <input class="form-control" type="number" id="id_empleado" name="id_empleado" value="${vacacion.empleado.idEmpleado}" required> --%>
+							                <div class="invalid-feedback">Por favor, ingrese el ID del empleado.</div>
+							            </div>
+								
+								
+								<div class="form-group">
+									<label for="fechasolicitudpeticion" class="form-label">Fecha Solicitud Petición</label>
+										<input class="form-control"type="date" id="fechasolicitudpeticion" name="fechasolicitudpeticion" value="${fn:substring(solicitud.fechasolicitudpeticion,0,10)}" required/>
+								<br/>
+								</div>
+								<div class="form-group">
+								
+								<label for="fechasolicitudpeticion" class="form-label">Fecha Solicitud Revision</label>
+								<input type="date" class="form-control" id="fechasolicitudrevision" name="fechasolicitudrevision" value="${fn:substring(solicitud.fechasolicitudrevision,0,10)}"required/>
+								<br/>
+								
+								
+								</div>
+								<div class="form-group">
+								<label for="estadosolicitud" class="form-label">Estado Solicitud</label>
+									<input type="text" class="form-control" id="estadosolicitud" name="estadosolicitud" value="${solicitud.estadosolicitud}"required/>
+								<br/>
+								</div>
+								<div class="form-group">
+								
+								<label for="pdfsolicitud" class="form-label">Pdf Solicitud</label>
+								<input type="text" class="form-control" id="pdfsolicitud" name="pdfsolicitud" value="${solicitud.pdfsolicitud}"required/>
+								<br/>
+								</div>
+								<div class="form-group">
+								<label for="descripcion" class="form-label">Descripcion</label>
+									<input type="text" id="descripcion" class="form-control" name="descripcion" value="${solicitud.descripcion}"required/>
+								<br/>
+								</div>
+									<!--  Empleado 
+										<select id="idEmpleado" name ="idEmpleado">
+											<c:forEach var="item" items="${empleado}"> 
+											<option value="${item.idEmpelado}">${item.empleado}</option>
+											
+										</c:forEach>
+											
+										</select>-->
+								<button class="btn btn-primary" type="submit">Guardar</button>
+								<button class="btn btn-danger"onclick="window.location.href='/ismac-recursos-humanos/solicitudes/findAll';return false;">
+								Cancelar
+								</button>
+							 </form>
+							 </div>
+							 </section>
+											   
    
    
    
@@ -413,7 +446,72 @@
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard.js"></script></body>    
     <script src="${pageContext.request.contextPath}/resources/js/dashboard.js"></script>
-
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(() => {
+		  'use strict'
+	 
+		  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+		  const forms = document.querySelectorAll('.needs-validation')
+	 
+		  // Loop over them and prevent submission
+		  Array.from(forms).forEach(form => {
+		    form.addEventListener('submit', event => {
+		      if (!form.checkValidity()) {
+		        event.preventDefault()
+		        event.stopPropagation()
+		      }
+	 
+		      form.classList.add('was-validated')
+		    }, false)
+		  })
+		})()
+	
+	</script>
 </body>
 </html>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
