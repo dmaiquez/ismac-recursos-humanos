@@ -361,7 +361,7 @@
    
    
    
-   
+<iframe title="recusos humanos" width="1300" height="841.25" src="https://app.powerbi.com/reportEmbed?reportId=91d4ce7a-eb61-4875-8927-54fbc6ea7c02&autoAuth=true&ctid=8305a4c8-98a6-4d10-97cc-b2f42afeb4d8" frameborder="0" allowFullScreen="true"></iframe>
    
    
    
